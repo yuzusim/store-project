@@ -1,0 +1,26 @@
+{{> layout/header}}
+<div class="container pt-5" style="text-align: center">
+    <table class="table table-striped">
+
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>상품가격</th>
+            <th>상품수량</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#productList}}
+            <tr>
+                <td>{{id}}</td>
+                <td><a href="/product/{{id}}" class="product">{{name}}</a></td>
+                <td>{{price}}</td>
+                <td>{{qty}}</td>
+            </tr>
+        {{/productList}}
+        </tbody>
+    </table>
+
+</div>
+{{> layout/footer}}

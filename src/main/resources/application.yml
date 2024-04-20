@@ -1,0 +1,50 @@
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+  port: 8080
+
+spring:
+  mustache:
+    servlet:
+      expose-session-attributes: true
+      expose-request-attributes: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/store?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: 1234
+    #  datasource:
+    #    driver-class-name: org.h2.Driver
+    #    url: jdbc:h2:mem:test;MODE=MySQL
+    #    username: sa
+    #    password:
+
+    sql:
+      init:
+        schema-locations:
+          - classpath:db/table.sql
+  #      data-locations:
+  #        - classpath:db/data.sql
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      data-locations:
+  #          - classpath:db/data.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 10
+    defer-datasource-initialization: true
+#    mybatis:
+#      mapper-locations:
+#        - mapper/**.xml
+#      configuration:
+#        map-underscore-to-camel-case: true
