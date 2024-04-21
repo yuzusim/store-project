@@ -50,4 +50,17 @@ public class ProductService {
         query.setParameter("id", id);
         query.executeUpdate();
     }
+
+    public Product findByname(String name) {
+        Query query = em.createQuery("select p from Product p where p.name= :name", Product.class);
+        query.setParameter("name", name);
+        try {
+            Product product = (Product) query.getSingleResult();
+            return product;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
 }

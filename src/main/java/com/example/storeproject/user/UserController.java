@@ -60,7 +60,8 @@ public class UserController {
             return new ApiUtil<>(false);
         }
     }
-    
+
+
     @GetMapping("/joinForm")
     public String joinForm() {
         return "user/joinForm";
