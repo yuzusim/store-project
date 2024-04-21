@@ -1,4 +1,4 @@
-package com.example.storeprojectv1.product;
+package com.example.storeproject.product;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
