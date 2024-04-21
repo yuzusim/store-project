@@ -1,10 +1,13 @@
 {{> layout/header}}
-<div class="container">
+<style>
+
+</style>
+<div class="container" style="width:600px; margin: 0 auto;">
     <form action="/product/add" method="post" onsubmit="return valid()">
         <div class="d-flex mb-3 mt-3">
-            <div class="">
+            <div>
                 상품명 : <input id="name" name="name" type="text"
-                             placeholder="상품명을 적어주세요">
+                             placeholder="상품명을 적어주세요" style="width:70%;">
             </div>
             <div>
                 <button type="button" onclick="nameSameCheck()" class="btn btn-warning">상품중복체크</button>

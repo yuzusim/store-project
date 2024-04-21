@@ -10,3 +10,16 @@
 .w16 {
     width: 1600px;
 }
+
+input {
+    width: 50%;
+    height: 38px;
+}
+
+input [type="text"] {
+    _width: 100%;
+}
+
+input [type="number"] {
+
+}
