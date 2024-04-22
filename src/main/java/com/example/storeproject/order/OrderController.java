@@ -1,10 +1,12 @@
 package com.example.storeproject.order;
 
-import com.example.storeproject.user.User;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -13,10 +15,12 @@ public class OrderController {
     private final OrderService orderService;
     private final HttpSession session;
 
-    @PostMapping("/reply/save")
-    public String save(OrderRequest.SaveDTO reqDTO) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
-        orderService.구매하기(reqDTO, sessionUser);
-        return "redirect:/product/" + reqDTO.getUserId();
+    // 구매 목록보기
+    @GetMapping({"/order/1/orderList"})
+    public String list(HttpServletRequest request){
+        List<Order> orderList = orderService.findAll();
+        request.setAttribute("orderList", orderList);
+        return "order/orderList";
     }
+
 }

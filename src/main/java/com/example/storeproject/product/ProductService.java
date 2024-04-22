@@ -17,7 +17,7 @@ public class ProductService {
     //상품 목록보기 완료
     public List<Product> findAll() {
         Query query =
-                em.createQuery("select p from Product p order by p.id desc", Product.class);
+                em.createQuery("select p from Product p order by p.id asc", Product.class);
         return query.getResultList();
     }
 

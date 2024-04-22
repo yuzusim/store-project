@@ -72,7 +72,7 @@ public class UserController {
     // select * from user_tb where username=? and password=?
     @PostMapping("/login")
     public String login(UserRequest.LoginDTO reqDTO) {
-        System.out.println(reqDTO); // toString -> @Data
+        System.out.println(reqDTO);
 
         if (reqDTO.getUsername().length() < 3) {
             // 유효하지 않은 경우 에러 페이지나 로그인 폼으로 리다이렉션

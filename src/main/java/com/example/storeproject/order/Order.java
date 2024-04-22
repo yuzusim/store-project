@@ -34,26 +34,4 @@ public class Order {
         this.createdAt = createdAt;
     }
 
-    // 주문을 여러번 할수 있다.
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private User user;
-//
-//    // 구매자는 여러번 상품을 주문할 수 있다.
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Product product;
-//
-//    @Transient
-//    private boolean isOrderOwner;
-//
-//    private Integer status; // 1:구매, 2:취소
-//
-//    @Builder
-//    public Order(Integer id, User user, Product product, boolean isOrderOwner, Integer status) {
-//        this.id = id;
-//        this.user = user;
-//        this.product = product;
-//        this.isOrderOwner = isOrderOwner;
-//        this.status = status;
-//    }
-
 }
