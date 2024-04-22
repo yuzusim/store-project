@@ -1,4 +1,4 @@
-package com.example.storeprojectv1.product;
+package com.example.storeproject.product;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -17,7 +17,7 @@ public class ProductService {
     //상품 목록보기 완료
     public List<Product> findAll() {
         Query query =
-                em.createQuery("select p from Product p order by p.id desc", Product.class);
+                em.createQuery("select p from Product p order by p.id asc", Product.class);
         return query.getResultList();
     }
 
@@ -50,4 +50,17 @@ public class ProductService {
         query.setParameter("id", id);
         query.executeUpdate();
     }
+
+    public Product findByname(String name) {
+        Query query = em.createQuery("select p from Product p where p.name= :name", Product.class);
+        query.setParameter("name", name);
+        try {
+            Product product = (Product) query.getSingleResult();
+            return product;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
 }

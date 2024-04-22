@@ -1,12 +1,11 @@
-package com.example.storeprojectv1.product;
+package com.example.storeproject.product;
 
+import com.example.storeproject.util.ApiUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -54,6 +53,16 @@ public class ProductController {
 
         // 페이지 리턴
         return "redirect:/";
+    }
+
+    @GetMapping("/api/name-same-check")
+    public @ResponseBody ApiUtil<?> nameSameCheck(@RequestParam("name") String name) {
+        Product product = productService.findByname(name);
+        if (product == null) { // 상품 등록 해도 된다.
+            return new ApiUtil<>(true);
+        } else { // 상품 등록 하면 안된다.
+            return new ApiUtil<>(false);
+        }
     }
 
     // 상품 수정하기

@@ -1,0 +1,41 @@
+{{> layout/header}}
+
+<div class="container pt-5" style="text-align: center">
+    <table class="table table-striped">
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>상품가격</th>
+            <th>구매수량</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>바나나</td>
+            <td>구매수량</td>
+            <td>가격</td>
+            <div class="css-1gueo66 e1cqr3m40">
+                <button type="button" aria-label="수량내리기" disabled="" class="css-1e90glc e1hx75jb0"></button>
+                <div class="count css-6m57y0 e1cqr3m41">1</div>
+                <button type="button" aria-label="수량올리기" class="css-18y6jr4 e1hx75jb0"></button></div>
+
+        </tr>
+    </table>
+</div>
+
+<div id="example"
+     class="counter"
+     min="1"
+     max="10"
+     step="2">
+</div>
+<script>
+    $(function(){
+
+        $("#example").htmlNumberSpinner();
+
+    });
+</script>
+
+
+{{> layout/footer}}

@@ -1,23 +1,41 @@
 {{> layout/header}}
 <div class="container pt-5" style="text-align: center">
     <table class="table table-striped">
-
         <thead>
         <tr>
             <th>번호</th>
             <th>상품명</th>
             <th>상품가격</th>
             <th>상품수량</th>
+            <th>상세보기</th>
         </tr>
         </thead>
         <tbody>
         {{#productList}}
-            <tr>
-                <td>{{id}}</td>
-                <td><a href="/product/{{id}}" class="product">{{name}}</a></td>
-                <td>{{price}}</td>
-                <td>{{qty}}</td>
-            </tr>
+            <!--개인 로그인시 볼 수 있는 리스트-->
+            {{#isCheck}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{qty}}</td>
+                    <td><a href="/product/{{id}}" class="product btn btn-warning">상세보기</a></td>
+
+                </tr>
+            {{/isCheck}}
+            <!--개인 로그인시 볼 수 있는 리스트-->
+
+            <!--판매자 로그인시 볼 수 있는 리스트-->
+            {{^isCheck}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td><a href="/product/{{id}}" class="product">{{name}}</a></td>
+                    <td>{{price}}</td>
+                    <td>{{qty}}</td>
+                    <td><a href="/product/{{id}}" class="product btn btn-warning">상세보기</a></td>
+                </tr>
+            {{/isCheck}}
+            <!--판매자 로그인시 볼 수 있는 리스트-->
         {{/productList}}
         </tbody>
     </table>
