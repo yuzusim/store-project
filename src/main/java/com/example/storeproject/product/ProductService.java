@@ -14,6 +14,7 @@ public class ProductService {
     private final ProductJPARepository productRepo;
     private final EntityManager em;
 
+
     //상품 목록보기 완료
     public List<Product> findAll() {
         Query query =
@@ -27,11 +28,18 @@ public class ProductService {
     }
 
     //상품 등록 완료
+//    @Transactional
+//    public Product save(ProductRequest.SaveDTO reqDTO) {
+//        productRepo.save(reqDTO.toEntity());
+//        return Product.builder().build();
+//    }
+
     @Transactional
-    public Product save(ProductRequest.SaveDTO reqDTO) {
-        productRepo.save(reqDTO.toEntity());
-        return Product.builder().build();
+    public Product save(Product product) {
+        em.persist(product);
+        return product;
     }
+
 
     //상품 업데이트 완료
     @Transactional

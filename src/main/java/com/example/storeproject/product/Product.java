@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @NoArgsConstructor
 @Data
@@ -27,29 +27,25 @@ public class Product {
     @Column(nullable = false)
     private Integer qty; //수량
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    //여러개의 상품에 유저가 구매할 수 있다. N:1
+    //여러개의 상품을 유저가 구매할 수 있다. N:1
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    //@OrderBy("id desc")
-    //@OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    //private List<Order> orders = new ArrayList<>();
+    @Column(nullable = false)
+    private String img; //상품이미지
 
-    @Transient // 테이블 생성이 안됨
-    private boolean isproductOwner;
+    @CreationTimestamp // pc -> db (날짜주입)
+    private Timestamp createdAt;
 
     @Builder
-    public Product(Integer id, String name, Integer price, Integer qty, LocalDateTime createdAt, User user, boolean isproductOwner) {
+    public Product(Integer id, String name, Integer price, Integer qty, User user, String img, Timestamp createdAt) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.qty = qty;
-        this.createdAt = createdAt;
         this.user = user;
-        //this.orders = orders;
-        this.isproductOwner = isproductOwner;
+        this.img = img;
+        this.createdAt = createdAt;
     }
+
 }

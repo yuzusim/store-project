@@ -1,13 +1,20 @@
 package com.example.storeproject.product;
 
+import com.example.storeproject.user.User;
 import com.example.storeproject.util.ApiUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Controller
@@ -15,6 +22,7 @@ public class ProductController {
     private final ProductRepository productRepository;
     private final ProductService productService;
     private final HttpSession session;
+
 
     // 상품목록보기
     @GetMapping({"/product", "/"})
@@ -48,8 +56,8 @@ public class ProductController {
 //        System.out.println("number : "+number);
 //        System.out.println("qty : "+qty);
 
-        //User sessionUser = (User) session.getAttribute("sessionUser");
-        productService.save(reqDTO);
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        productService.save(reqDTO.toEntity(sessionUser));
 
         // 페이지 리턴
         return "redirect:/";
